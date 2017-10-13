@@ -1,1 +1,6 @@
-iiiii
+---
+layout: post
+title: "test"
+---
+
+test
