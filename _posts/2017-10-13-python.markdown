@@ -9,6 +9,5 @@ categories: programming
 ========
 
 ```python
-
 str1.index(str2)  # the position of str2 in str1, return a 'int'
 ```
