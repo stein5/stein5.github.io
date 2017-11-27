@@ -9,4 +9,15 @@ categories: jekyll update
 
 #### Package Manager
 
-Ctrl + ,   # 
+Ctrl + ,   #
+
+
+#### keymap.cson
+
+keymap.cson 파일에 다음의 내용을 추가
+
+```javascript
+'body':
+  'ctrl-alt-pageup': 'window:focus-pane-on-left'
+  "ctrl-alt-pagedown": 'window:focus-pane-on-right'
+```

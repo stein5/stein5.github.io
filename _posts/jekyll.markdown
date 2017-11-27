@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "atom editor"
+title:  "jekyll"
 date:   2017-10-13 14:19:51 +0900
 categories: jekyll update
 ---
