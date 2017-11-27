@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "atom editor"
+date:   2017-10-13 14:19:51 +0900
+categories: jekyll update
+---
+
+### atom shortcut
+
+#### Package Manager
+
+Ctrl + ,   # 
