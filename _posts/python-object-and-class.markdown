@@ -130,3 +130,71 @@ class Circle():
 #### private 네임 맹글링
 클래스 정의 외부에서 볼 수 없도록 하는 속성에 대한 네이밍 컨벤션이 존재.
 속성 이름 앞에 두 언더스코어(__)를 붙이면 됨.
+```python
+class Duck():
+    def __init__(self, input_name):
+        self.__name = input_name
+    @property
+    def name(self):
+        print('inside the getter')
+        return self.__name
+    @name.setter
+    def name(self, input_name):
+        print('inside the setter')
+        self.__name = input_name
+
+>>> fowl = Duck('Howard')
+>>> fowl.__name
+Traceback (most recent call last):
+    ....
+>>> fowl._Duck__name
+Howard
+```
+getter와 setter는 잘 동작함. 하지만 Duck클래스의 인스선트에서 __name으로 접근이 불가능
+이처럼 파이썬은 이 속성이 우연히 외부코드에서 발견할 수 없도록 이름을 맹글링함.
+
+#### 메서드 타입
+###### 인스턴스 메서드
+###### 클래스 메서드
+클래스전체와 클래스에 대한 어떤 변화가 있을때 모든 객체에 영향을 미침.
+@classmethod데커레이터로 구현. 이 메서드의 첫번째 매개변수는 클래스 자신.(보통 cls로 표기)
+```python
+class A():
+    count = 0
+    def __init__(self):
+        A.count += 1
+    def exclaim(self):
+        print("I'm an A!")
+    @classmethod
+    def kids(cls):
+        print("A has", cls.count, "little objects.")
+
+>>> easy_a = A()
+>>> breezy_a = A()
+>>> wheezy_a = A()
+>>> A.kids()
+A has 4 little objects.
+```
+###### 정적 메서드
+@staticmethod데커레이터가 붙어 있으며, 첫번째 매개변후로 self나 cls가 없음.
+주로 클래스의 상태 또는 인스턴스의 상태와 관계 없이 바로 실행시킬 수 있는 용도로 사용함.
+
+#### 덕 타이핑
+파이썬은 다형성을 느슨하게 구현: 클래스에 상관없이 같은 동작을 다른 객체에 적용 할 수 있음.
+```python
+class Quote():
+    def __init__(self,person, words):
+        self.person = person
+        self.words = words
+    def who(self):
+        return self.person
+    def says(self):
+        return self.words
+
+class QuestionQuote(Quote):
+    def says(self):
+        return self.words + '?'
+
+class ExclamationQuote(Quote):
+    def says(self):
+        return self.words + '!'
