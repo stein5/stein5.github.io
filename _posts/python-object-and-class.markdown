@@ -253,3 +253,8 @@ Duck(bill='wide orange', 'tail'='long')
 >>> duck3 = duck2._replace(tail='magnificent', bill='crushing')
 >>> duck3
 Duck(bill='crushing', tail='magnificent')
+```
++ 네임드튜플은 불변하는 객체처럼 행동한다.
++ 객체보다 공간효율성과 시간효율성이 좋다.
++ 딕셔너리의 괄호 표기법 대신 점 표기법으로 속성에 접근할 수 있다.
++ 딕셔너리처럼 키를 통해 속성에 접근할 수 있다.
