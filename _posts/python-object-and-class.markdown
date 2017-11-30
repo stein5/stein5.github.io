@@ -179,22 +179,77 @@ A has 4 little objects.
 @staticmethod데커레이터가 붙어 있으며, 첫번째 매개변후로 self나 cls가 없음.
 주로 클래스의 상태 또는 인스턴스의 상태와 관계 없이 바로 실행시킬 수 있는 용도로 사용함.
 
-#### 덕 타이핑
-파이썬은 다형성을 느슨하게 구현: 클래스에 상관없이 같은 동작을 다른 객체에 적용 할 수 있음.
+#### 특수메서드
+두 언더스코어 __로 시작
 ```python
-class Quote():
-    def __init__(self,person, words):
-        self.person = person
-        self.words = words
-    def who(self):
-        return self.person
-    def says(self):
-        return self.words
+class Word():
+    def __init__(self, text):
+        self.text = text
+    def __equals__(self, word2):
+        return self.text.lower() == word2.text.lower()
+    def __str__(self):
+        return self.text
+    def __repr__(self):
+        return "Word('" + self.text + "')"
 
-class QuestionQuote(Quote):
-    def says(self):
-        return self.words + '?'
+>>> first = Word('HA')
+>>> second = Word('ha')
+>>> third = Word('ah')
 
-class ExclamationQuote(Quote):
-    def says(self):
-        return self.words + '!'
+>>> first == second
+True
+>>> first == third
+False
+
+>>> first
+Word("ha")
+>>> print(first)
+ha
+```
+####컴포지션
+is-a관계: 상속
+has-a관계: 컴포지션 composition 또는 어그리게션 aggregation
+```python
+class Bill():
+    def __init__(self, description):
+        self.description = description
+class Tail():
+    def __init__(self, length):
+        self.length = length
+class Duck():
+    def __init__(self, bill, tail):
+        self.bill = bill
+        self.tail = tail
+    def about(self):
+        print('bill:', self.bill.description, 'tail:', self.tail.length)
+```
+#### 클래스와 객체, 그리고 모듈은 언제 사용할까?
++ 비슷한 행동(매서드)이르 하지만 내부상태(속성)가 다른 개별 인스턴스가 필요할 때 객체를 사용
++ 클래스는 상속을 지원하지만 모듈은 지원하지 않음
++ 어떤 한가지 일만 수행한다면 모듈이 적합. 참조된 횟수에 상관없이 하나의 복사본만을 가짐. 다른 객체지향언어의 싱글턴 처럼 사용가능
++ 여러함수에 인자로 전달될 수 있는 여러값을 포함한 여러 변수가 있다면 클래스를 정의
++ 딕셔너리, 리스트, 튜플은 모듈보다 더 작고 간단하며 빠름. 모듈은 클래스보다 간단함
+#### 네임드튜플
+네임드튜플은 이름과 인덱스로 접근 가능
+```python
+from collections import namedtuple
+Duck = namedtuple('Duck', 'bill tail')
+duck = Duck('wide orange', 'long')
+
+>>> duck
+Duck(bill='wide orange', 'tail'='long')
+>>> duck.bill
+wide orange
+>>> duck.tail
+long
+
+>>> parts = {'bill': 'wide orange', 'tail': 'long'}
+>>> duck2 = Duck(**parts)
+>>> duck2
+Duck(bill='wide orange', 'tail'='long')
+```
+네임드튜플은 불변. 하지만 필드를 바꿔서 또 다른 네임드튜플을 반환
+```python
+>>> duck3 = duck2._replace(tail='magnificent', bill='crushing')
+>>> duck3
+Duck(bill='crushing', tail='magnificent')
