@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "about pytest"
-date:   2017-10-19 15:51:51 +0900
+date:   2017-01-01 15:51:51 +0900
 categories: unittest
 ---
 
@@ -31,4 +31,3 @@ categories: unittest
 그 메소드는 적어도 하나 이상의 부분으로 나눠야 한다는 것이다.
 
 #### 단위테스트 라이브러리
-

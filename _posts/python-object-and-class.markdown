@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "python object and class"
-date: 2017-10-13 14:19:51 +0900
+date: 2017-01-01 14:19:51 +0900
 categories: programming
 ---
 
