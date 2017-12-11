@@ -16,6 +16,7 @@ Ctrl + ,   #
 
 keymap.cson 파일에 다음의 내용을 추가
 
+
 ```javascript
 'body':
   'ctrl-alt-pageup': 'window:focus-pane-on-left'
