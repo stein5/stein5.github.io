@@ -56,7 +56,7 @@ https://docs.djangoproject.com/en/2.0/intro/reusable-apps/
 
 ### 앱 모듈
 #### 공통 앱 모듈
-```python
+```bash
 favors
 ├── __init__.py
 ├── admin.py
@@ -70,7 +70,7 @@ favors
 └── views.py
 ```
 #### 비공통 앱 모듈
-```python
+```bash
 favors
 ├── __init__.py
 ├── admin.py
@@ -123,13 +123,17 @@ migration tip
 ### 캐시와 비정규화
 ### 반드시 필요한 경우에만 비정규화를 진행
 ### 언제 널을 쓰고 언제 공백을 쓸것인가
+
+
 | 필드 타입 | null=True로 설정하기 | blank=True로 설정하기 |
-| ------- | ------------------ | ------------------- |
+| ------- | -----------------  | ------------------- |
 | CharField, TextField, SlugField, EmailField, CommaSeperatedIntegerField, UUIDField | 이용하지 않음. 장고 표준 빈 값(empty value)을 빈 문자열(empty string)로 저장하는것. 일관성을 위해 널값 또는 빈 값을 빈 문자열에 대해 반환하도록 함 | 이용함. 위젯이 빈 값을 허용하기를 원한다면 설정. 이렇게 설정하면 데이터베이스 에서는 빈 값이 빈 문자열로 저장 됨 |
 | FileField, ImageField | 이용하지 않음. 장고는 MEDIA_ROOT의 경로를 CharField에 파일 또는 이미지로 저장함. 따라서 같은 패턴이 FileField에도 적용됨. | CharField와 마찬가지로 이용함 |
 | IntegerField, FloatField, DecimalField, DuationField 등 | 해당 값이 데이터베이스에 NULL로 들어가도 문제가 없다면 이용 | 위젯에서도 해당 값이 빈 값을 받아 와도 문제가 없다면 이용. 그럴 경우 null=True와 같이 이용 |
 | DateTimeField, DateField, TimeField 등 | 데이터베이스에서 해당 값들을 NULL로 설정하는게 가능하다면 이용 | 위젯에서 해당값이 빈값을 받아와도 문제가 없다거나 auto_now나 auto_now_add를 이용하고 있다면 이용. 그럴 경우 null=True와 같이 이용 |
 | ForeinKey, ManyToManyField, OneToOneField, GenericIPAddressField | 데이터베이스에 해당 값들을 NULL로 설정하는게 가능하다면 이용 | 위젯에서 해당값(예를들어 셀렉트 박스)이 빈값을 받아와도 괜찮다면 이용 |
+
+
 ### BinaryField
 장고 1.8부터 추가됐으며 raw binary data또는 byte저장. filter, exclude, 기다 SQL액션들이 적용되지 않음. 개인적인 의견으로 파일시스템이 훨씬 빠르므로 별로 쓰일꺼같진 않음
 ### 범용관계 피하기
