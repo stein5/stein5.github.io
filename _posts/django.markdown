@@ -13,6 +13,9 @@ https://cjh5414.github.io/ubuntu-pyenv-virtualenv/
 
 ## install postgresql
 설치: https://www.postgresql.org/download/linux/ubuntu/
+```bash
+brew services start postgresql# mac에서 자동시작
+```
 
 
 postres role로 postgres database에 접근
