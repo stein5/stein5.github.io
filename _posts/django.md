@@ -33,7 +33,6 @@ if setting.DEBUG:
     urlpatterns += [url('r^debuginfo/$', views.debug),]
 ```
 
-
 ### 정규표현식
 | 기호 | 일치 유무 검색 대상 |
 | --- | --------------- |
@@ -63,6 +62,22 @@ if setting.DEBUG:
 + HTTP_USER_AGENT: 사용자 웹 브라우저의 사용자 에이전트 문자열(있는경우)
 + REMOTE_ADDR: 클라이언트의 IP주소
 + 딕셔너리임으로 존재하지 않는 키에 접근시 에러발생. try/except절이나 get()메서드를 사용하여 이용
+
+### 명명된 그룹
++ URL에서는 뷰를 인수로 전달하기 위해 괄호를 사용
++ 명명된 정표현식을 사용해 URL캡쳐 가능
++ (? P<name> pattern)의 형태이며 name은 그룹의 이름이고 pattern은 일치시킬 패턴
+```python
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+    url(r'reviews/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', views.month_archive),
+    ...
+]
+```
++ /reviews/2005/03/에 대한 요청은 view.month_archive(request, year='2005', month='03')함수를 호출
 
 ## 장고 모델
 + 모델체크

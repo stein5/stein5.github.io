@@ -17,7 +17,6 @@ https://cjh5414.github.io/ubuntu-pyenv-virtualenv/
 brew services start postgresql# mac에서 자동시작
 ```
 
-
 postres role로 postgres database에 접근
 ```bash
 $ sudo -u postgres psql postgres
@@ -29,6 +28,7 @@ sudo -u postgres psql postgres
 postgres=$ ALTER USER postgres WITH PASSWORD '비밀번호';
 postgres=$ CREATE DATABASE 디비명;
 postgres=$ CREATE USER 유저명 WITH PASSWORD '비밀번호';
+(postgres=$ ALTER USER 유저명 WITH PASSWORD '비밀번호';)
 postgres=$ ALTER ROLE 유저명 SET client_encoding TO 'utf8';
 postgres=$ ALTER ROLE 유저명 SET default_transaction_isolation TO 'read committed';
 postgres=$ ALTER ROLE 유저명 SET timezone TO 'UTC';
@@ -36,6 +36,15 @@ postgres=$ GRANT ALL PRIVILEGES ON DATABASE 디비명 TO 유저명;
 postgres=$ \q
 (in virtualenv)$ pip install psycopg2
 ```
+
+## postgresql 기본명령어
+```bash
+\list  # 데이터베이스 목록
+\dt  # 데이터베이스 내 에서 테이블 목록
+\c 데이터베이스명  # 데이터베이스 연결  
+\du  # 유저, 어카운트 목록
+```
+
 
 ## install gunicorn, nginx
 ```bash
@@ -53,6 +62,14 @@ postgres=$ \q
 >>> print(django.get_version())
 2.0
 ```
+
+## pip
+```bash
+pip freeze > requirements.txt  # requirements파일에 현제 설치된 라이브러리 export
+pip install -r requirements.txt  # requirements에 기록된 라이브러리 설치
+``
+
+
 ## creating and setting a django project
 ```bash
 (in virtualenv)$ django-admin startproject 프로젝트명
