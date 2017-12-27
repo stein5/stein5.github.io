@@ -99,3 +99,56 @@ class Meta:
 ```python
 >>> Publisher.objects.all().delete()
 ```
++ foreign key를 역으로 찾아들어가거나 다대일 값 액세스
+```python
+>>> p.book_set.all()
+>>> p.book_set.filter(title__icontains='django')  # title은 Book의 속성
+```
+### 모델관리자
++ 모델관리자는 장고 모델이 데이터베이스 쿼리를 수행하는 객체
++ 각 장고 모델에는 최소한 하나의 관리자가 있으며 여분의 메서드 추가 또는 기존메서드를 수정하기 위해 사용자 정의 관리자 생성 가능
+```python
+from django.db import models
+class BookManager(models.Manager):
+    def title_count(self, keyword):
+        return self.filter(title__icontains=keyword).count()
+class Book(models.Model):
+    ....
+    objects = BookManager()
+```
++ 코드를 복제 할 필요가 없도록 일반적으로 실행되는 쿼리를 캡슐화 함
+
+### 초기관리자 QuerySet수정
++ Manager.get_queryset()메서드를 오버라이드 해서 기본 QuerySet을 재정의 할 수 있음
++ get_queryset()은 필요한 속성으로 QuerySet을 반환해야 함
++ get_queryset()은 QuerySet을 반환하기 때문에 filter(), exclude()및 기타 모든 QuerySet메서드를 사용할 수 있음
+```python
+from django.db import models
+class DahlBookManager(models.Manager):
+    def get_queryset(self):
+        return super(DahlBookManager, self).get_queryset().filter(author='Roald Dahl')
+class Book(models.Model):
+    .....
+    objects = models.Manager()  # 기본설정 관리자
+    dahl_objects = DahlBookManager()
+
+Book.dahl_objects.all()
+Book.dahl_objects.filter(title='Matilda')
+Book.dahl_objects.count()
+```
+```python
+class MaleManager(models.Manager):
+    def get_queryset(self):
+        return super(MaleManager, self).get_queryset().filter(sex='M')
+
+class FemaleManager(models.Manager):
+    def get_queryset(self):
+        return super(FemaleManager, self).get_queryset().filter(sex='M')
+
+class Person(models.Model):
+    ...
+    people = models.Manager()
+    men = MaleManager()
+    woman = FemailManager()
+```
++ 장고는 클래스에서 정의된 첫번재 Manager를 기본 Manager로 해석하고, 장고의 일부가 해당 모델에만 해달 Manager를 사용 할 것이다(???번역이 이상한건지 이해가 안감)
