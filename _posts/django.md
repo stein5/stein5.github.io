@@ -151,4 +151,13 @@ class Person(models.Model):
     men = MaleManager()
     woman = FemailManager()
 ```
-+ 장고는 클래스에서 정의된 첫번재 Manager를 기본 Manager로 해석하고, 장고의 일부가 해당 모델에만 해달 Manager를 사용 할 것이다(???번역이 이상한건지 이해가 안감)
++ 장고는 클래스에서 정의된 첫번재 Manager를 기본 Manager로 해석하고, 장고의 일부가 해당 모델에만 해당 Manager를 사용 할 것이다(???번역이 이상한건지 이해가 안감)
+
+### 모델 메서드
++ 커스텀 메서드 작성
++ 각 모델에 자동으로 부여된 메서드 오버라이드, 예) __str__(), save(), delete()
+
+### 원시 쿼리 수행
+```python
+Manager.raw(raw_query, params=None, translations=None)
+```
