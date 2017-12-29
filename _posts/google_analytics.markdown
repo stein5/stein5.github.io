@@ -156,3 +156,10 @@ segment: 데이터를 나눠 보는 것, 각 표에서 보고싶은 데이터를
 
 연령, 성별, 관심도 등
 목표 전환률, 이탈률
+
+
+====
+
+1.kissmetrics: 기술적인 내용
+2.kissmetrics: metric, reports에 대한 내용
+3.마케팅전략별 ga, kissmetrics 활용가능 영역

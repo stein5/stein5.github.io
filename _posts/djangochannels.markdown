@@ -25,3 +25,15 @@ pip install channels
 pip install asgi-redis
 pip install daphne
 ```
+
+https://gearheart.io/blog/creating-a-chat-with-django-channels/
+
+
+### ws.send('hello')전에...
++ INSTALLED_APPS 에 'channels'추가 누락 --> handshake에러
++ brew install redis, brew services start redis 누락
+    - https://stackoverflow.com/questions/37761162/django-development-server-showing-error-61-connection-refused-with-redis
+    - https://superuser.com/questions/504892/how-do-i-restart-redis-that-i-installed-with-brew
+
+### login페이지 열기 전에...
++ settings.py에 TEMPLATES - 'DIRS' 에 'templates'추가
