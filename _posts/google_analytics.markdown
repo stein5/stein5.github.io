@@ -137,7 +137,7 @@ segment: 데이터를 나눠 보는 것, 각 표에서 보고싶은 데이터를
 어느 관심 분야에 고객들이 집중되어 있는가?
 고객들이 어느 지역에서, 어떤 언어를 사용하는가?
 
-
+===
 -사람이 많이 들어왔냐까지는 됀다. 연령 성별 정보가 정확한지는 모르고 있으면 유용은 한가. 위치정보는 지금 있기는 한데 위치가 있으려면 차라리 좀 정확해야하는데 그거까지는 안돼고. 유입시간대, 구입시간대.
 
 -근데 과연 그 사람들이 샀냐?
@@ -163,3 +163,70 @@ segment: 데이터를 나눠 보는 것, 각 표에서 보고싶은 데이터를
 1.kissmetrics: 기술적인 내용
 2.kissmetrics: metric, reports에 대한 내용
 3.마케팅전략별 ga, kissmetrics 활용가능 영역
+
+
+
+=======
+home에서 이벤트 클릭
+
+jay@mgsslc.com did an event: Page view.
+
+jay@mgsslc.com was given properties:
+Viewed URL: https://e-lolo.com/events/40/
+Referrer: https://e-lolo.com/
+
+04:40:32 PM
+jay@mgsslc.com did an event: Into event.
+
+jay@mgsslc.com was given properties:
+into_event_id: 40
+into_event_title: 1월 $1 반짝딜
+
+04:40:32 PM
+jay@mgsslc.com did an event: Home layout.
+
+jay@mgsslc.com was given properties:
+home_layout_section_type: rolling_banner_4
+home_layout_url: https://e-lolo.com/events/40/
+======
+
+채팅창에서 입력시
+
+jay@mgsslc.com did an event: Page view.
+
+jay@mgsslc.com was given properties:
+Viewed URL: https://e-lolo.com/
+Referrer: Direct
+
+=======
+
+네이버에서 검색후 클릭시
+jay@mgsslc.com did an event: Page view.
+
+jay@mgsslc.com was given properties:
+Viewed URL: https://e-lolo.com/
+Referrer: https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=ut...
+
+========
+
+jay@mgsslc.com did an event: Page view.
+
+jay@mgsslc.com was given properties:
+Viewed URL: https://e-lolo.com/events/41/
+Referrer: https://e-lolo.com/
+
+01:57:46 PM
+jay@mgsslc.com did an event: Into event.
+
+jay@mgsslc.com was given properties:
+into_event_id: 41
+into_event_title: 무스텔라 론칭 기념 이벤트
+
+01:57:46 PM
+jay@mgsslc.com did an event: Home layout.
+
+jay@mgsslc.com was given properties:
+home_layout_section_type: rolling_banner_4
+home_layout_url: https://e-lolo.com/events/41/
+
+=========

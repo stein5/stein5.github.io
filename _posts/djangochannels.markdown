@@ -29,7 +29,7 @@ https://gearheart.io/blog/creating-a-chat-with-django-channels/
 ![django](./django1.png)
 + Channels allow (Django) servers to communicate with Websockets
 + Django runs with Channels "event oriented", is responding not just to requests but also to a wide array of events
-![channels](./channels.png)
+![channels](./channels1.png)
 + A **consumer** is a **event handler**, which is called independently in a way much like a view is called
 + The core of the system is a datastructure called a channel. It ist based the first-in first-out queue
 + **messages** are put onto the channel **by producers**, and then given **to just one of the consumers** listening to that channel
