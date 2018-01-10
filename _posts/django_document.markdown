@@ -12,12 +12,10 @@ path()
 + New in Django 2.0.
 
 # The view layer
-## Class-based views
-```python
-from django.urls import path
-from django.views.generic import TemplateView
-
-urlpatterns = [
-    path('about/', TemplateView.as_view(template_name="about.html")),
-]
-```
+## Introduction to class-based views
++ Adventages:
+    - Organization of code related to specific HTTP methods (GET, POST, etc.) can be addressed by separate methods instead of conditional branching.
+    - Object oriented techniques such as mixins (multiple inheritance) can be used to factor code into reusable components.
++ Django's URL resolver expects to send request and associated arguments to a callable function, this is, why class-based views have an as_view() class method
++ as_view() function creates an instance of the class and calls its dispatch() method
++ dispatch looks at the request to determine whether it is a GET, POST, etc, and relays the request to matching method if one is defined, or raises HttpResponseNotAllowed if not
