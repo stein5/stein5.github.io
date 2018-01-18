@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "git"
+date:   2017-01-01 14:19:51 +0900
+categories: jekyll update
+---
+
+### 공개키 생성
+git서버들은 ssh공개키로 인증
+
+```bash
+$ cd ~
+$ ssh-keygen // 특별히 경로를 바꾸지 않는다면 계속 Enter
+```
+~/.ssh폴더에 id_rsa.pub이라는 퍼블릭키가 생성됨
