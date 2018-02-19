@@ -28,8 +28,8 @@ mac인 경우
   'cmd-pageup': 'pane:show-previous-item'
 
 'atom-text-editor':
+  'cmd-alt-down': 'window:focus-pane-on-left'
   'cmd-alt-up': 'window:focus-pane-on-right'
   'cmd-alt-down': 'window:focus-pane-on-left'
-  'cmd-ctrl-pagedown': 'window:focus-pane-on-left'
-  'cmd-ctrl-pageup': 'window:focus-pane-on-right'
+  'cmd-alt-up': 'window:focus-pane-on-right'
 ```
