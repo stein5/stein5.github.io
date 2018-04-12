@@ -5,7 +5,7 @@ date: 2017-01-01 14:19:51 +0900
 categories: programming
 ---
 
-# Setting for Develop with Django in Ubuntu
+# Setting for Develop with Django in Ubuntu(or mac)
 
 ## install pyenv, virtualenv
 https://cjh5414.github.io/ubuntu-pyenv-virtualenv/
@@ -67,7 +67,7 @@ postgres=$ \q
 ```bash
 pip freeze > requirements.txt  # requirements파일에 현제 설치된 라이브러리 export
 pip install -r requirements.txt  # requirements에 기록된 라이브러리 설치
-``
+```
 
 
 ## creating and setting a django project
@@ -106,7 +106,7 @@ settings.py대신 setting폴더를 생성하고 개발/배포 환경등 설정�
 $ tree
 ├── config
 │   ├── __init__.py  
-│   ├── settings.py
+│   ├── settings
 │   │   ├── base.py
 │   │   ├── local.py  
 │   │   ├── dev.py      
@@ -129,3 +129,23 @@ DATABASES = {
     }
 }
 ```
+### Internationalization
+https://docs.djangoproject.com/en/2.0/topics/i18n/  
+LANGUAGE_CODE = 'ko-KR'  
+TIME_ZONE = 'Asia/Seoul'
+
+### set private data in system environment
+```python3
+SECRET_KEY = os.environ['환경변수의 해당 SECRET_KEY']
+DATABASES = {
+    'default': {
+        'USER': os.environ['환경변수의 해당 USER'],
+        'PASSWORD': os.environ['환경변수의 해당 PASSWORD'],
+    }
+}
+```
+해당 변수들을 ~/.bashrc 또는 ~/.zshrc등에 저장 후 source  
+```bash
+$ set  # 환경변수로 등록되었는지 확인
+```
+###
